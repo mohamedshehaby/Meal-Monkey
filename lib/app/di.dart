@@ -5,6 +5,7 @@ import 'package:meal_monkey/domain/repositories/location_repository.dart';
 import 'package:meal_monkey/presentation/blocs/location/location_bloc.dart';
 
 import '../domain/repositories/places_repository.dart';
+import '../presentation/blocs/filter/filter_bloc.dart';
 import '../presentation/blocs/places/places_bloc.dart';
 
 final instance = GetIt.I;
@@ -18,9 +19,12 @@ Future<void> init() async {
   instance.registerLazySingleton<PlacesRepository>(() => PlacesRepositoryImpl());
 
   /// [Blocs]
-  /// LocationBloc
+  /// Location Bloc
   instance.registerLazySingleton<LocationBloc>(() => LocationBloc(locationRepository: instance()));
 
-  /// PlacesBloc
+  /// Places Bloc
   instance.registerLazySingleton<PlacesBloc>(() => PlacesBloc(placesRepository: instance()));
+
+  /// Filter Bloc
+  instance.registerLazySingleton<FilterBloc>(() => FilterBloc());
 }

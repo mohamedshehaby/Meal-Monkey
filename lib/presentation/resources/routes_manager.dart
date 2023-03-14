@@ -4,11 +4,12 @@ import 'package:meal_monkey/presentation/screens/basket/basket_screen.dart';
 import 'package:meal_monkey/presentation/screens/checkout/checkout_screen.dart';
 import 'package:meal_monkey/presentation/screens/delivery_time/delivery_time_screen.dart';
 import 'package:meal_monkey/presentation/screens/filter/filter_screen.dart';
+import 'package:meal_monkey/presentation/screens/onboarding/onboarding_screen.dart';
 import 'package:meal_monkey/presentation/screens/restaurant_details/restaurant_details_screen.dart';
 import 'package:meal_monkey/presentation/screens/restaurant_listing/restaurant_listing_screen.dart';
 import 'package:meal_monkey/presentation/screens/splash_screen/splash_screen.dart';
-import 'package:meal_monkey/presentation/screens/voucher/voucher_screen.dart';
 
+import '../../domain/models/restaurant.dart';
 import '../screens/home/home_screen.dart';
 import '../screens/location/location_screen.dart';
 
@@ -25,6 +26,7 @@ class RoutesManager {
   static const restaurantDetailsRoute = 'restaurantDetailsRoute';
   static const restaurantListingRoute = 'restaurantListingRoute';
   static const voucherRoute = 'restaurantListingRoute';
+  static const onBoardingRoute = 'onboardingRoute';
 
   static Route generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -42,12 +44,19 @@ class RoutesManager {
         return MaterialPageRoute(builder: (context) => const DeliveryTimeScreen());
       case filterRoute:
         return MaterialPageRoute(builder: (context) => const FilterScreen());
+      case onBoardingRoute:
+        return MaterialPageRoute(builder: (context) => const OnBoardingScreen());
+
       case restaurantDetailsRoute:
-        return MaterialPageRoute(builder: (context) => const RestaurantDetailsScreen());
+        return MaterialPageRoute(
+            builder: (context) => RestaurantDetailsScreen(
+                  restaurant: settings.arguments as Restaurant,
+                ));
       case restaurantListingRoute:
-        return MaterialPageRoute(builder: (context) => const RestaurantListingScreen());
-      case voucherRoute:
-        return MaterialPageRoute(builder: (context) => const VoucherScreen());
+        return MaterialPageRoute(
+            builder: (context) => RestaurantListingScreen(
+                  restaurants: settings.arguments as List<Restaurant>,
+                ));
       default:
         return _unKnownRoute();
     }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:meal_monkey/presentation/blocs/filter/filter_bloc.dart';
 
 import '../../app/di.dart';
 import '../blocs/location/location_bloc.dart';
@@ -21,6 +22,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (_) => instance<PlacesBloc>(),
         ),
+        BlocProvider(
+          create: (_) => instance<FilterBloc>()..add(LoadFilter()),
+        )
       ],
       child: ScreenUtilInit(
         designSize: const Size(375, 812),
@@ -29,7 +33,7 @@ class MyApp extends StatelessWidget {
         builder: (_, __) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-            initialRoute: RoutesManager.splashRoute,
+            initialRoute: RoutesManager.onBoardingRoute,
             onGenerateRoute: RoutesManager.generateRoute,
             theme: getAppTheme(),
           );

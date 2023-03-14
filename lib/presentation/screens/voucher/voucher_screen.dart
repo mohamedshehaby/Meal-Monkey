@@ -9,7 +9,7 @@ class VoucherScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(AppStrings.restaurantListing),
+        title: const Text(AppStrings.voucher),
       ),
     );
   }

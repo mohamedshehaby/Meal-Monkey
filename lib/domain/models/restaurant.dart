@@ -10,16 +10,17 @@ class Restaurant extends Equatable {
   final int deliveryTime;
   final double deliveryFee;
   final double distance; // TODO: Calculate distance between user and restaurant
+  final String priceCategory;
 
-  const Restaurant({
-    required this.name,
-    required this.imageUrl,
-    required this.tags,
-    required this.menuItems,
-    required this.deliveryTime,
-    required this.deliveryFee,
-    required this.distance,
-  });
+  const Restaurant(
+      {required this.name,
+      required this.imageUrl,
+      required this.tags,
+      required this.menuItems,
+      required this.deliveryTime,
+      required this.deliveryFee,
+      required this.distance,
+      required this.priceCategory});
 
   @override
   List<Object> get props {
@@ -48,6 +49,7 @@ class Restaurant extends Equatable {
       deliveryTime: 30,
       deliveryFee: 2.99,
       distance: 0.1,
+      priceCategory: '\$',
     ),
     Restaurant(
       name: 'Il Panino del Laghetto',
@@ -61,6 +63,7 @@ class Restaurant extends Equatable {
       deliveryTime: 30,
       deliveryFee: 2.99,
       distance: 0.1,
+      priceCategory: '\$',
     ),
     Restaurant(
       name: 'Viaggi Nel Gusto',
@@ -75,6 +78,7 @@ class Restaurant extends Equatable {
       deliveryTime: 30,
       deliveryFee: 2.99,
       distance: 0.1,
+      priceCategory: '\$',
     ),
     Restaurant(
       name: 'Burgers',
@@ -89,6 +93,7 @@ class Restaurant extends Equatable {
       deliveryTime: 30,
       deliveryFee: 2.99,
       distance: 0.1,
+      priceCategory: '\$',
     ),
     Restaurant(
       name: 'Tandoori Bites',
@@ -103,6 +108,7 @@ class Restaurant extends Equatable {
       deliveryTime: 30,
       deliveryFee: 2.99,
       distance: 0.4,
+      priceCategory: '\$',
     )
   ];
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'font_manager.dart';
 
@@ -9,8 +8,11 @@ TextStyle _getTextStyle({
   required Color color,
   required FontWeight fontWeight,
 }) {
-  return GoogleFonts.montserrat(
-    textStyle: TextStyle(fontSize: fontSize.sp, color: color, fontWeight: fontWeight),
+  return TextStyle(
+    fontSize: fontSize.sp,
+    fontFamily: FontConstants.fontFamily,
+    color: color,
+    fontWeight: fontWeight,
   );
 }
 
